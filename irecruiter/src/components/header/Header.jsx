@@ -1,4 +1,6 @@
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+    AppBar, Box, IconButton, Toolbar
+} from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
