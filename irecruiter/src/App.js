@@ -9,6 +9,19 @@ import LoginPage from './components/login/LoginPage';
 
 function App() {
 
+  const register = () => { 
+
+  }
+
+  const login = () => { 
+
+  }
+
+  const logout = () => { 
+
+  }
+
+
   const usersCollectionRef = collection(db, 'users');
   const [users, setUsers] = useState([])
 
@@ -24,7 +37,8 @@ function App() {
   console.log(users)
   return (
     <div className="App">
-      <LoginPage/>
+     
+      <LoginPage login={login} />
     </div>
   );
 }
