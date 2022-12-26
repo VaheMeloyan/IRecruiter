@@ -5,22 +5,12 @@ import {collection, getDocs} from 'firebase/firestore'
 import Header from './components/header/Header';
 import { useState } from 'react';
 import LoginPage from './components/login/LoginPage';
+import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
 
-  const register = () => { 
-
-  }
-
-  const login = () => { 
-
-  }
-
-  const logout = () => { 
-
-  }
-
+  
 
   const usersCollectionRef = collection(db, 'users');
   const [users, setUsers] = useState([])
@@ -37,8 +27,12 @@ function App() {
   console.log(users)
   return (
     <div className="App">
+      
+      <Routes>
+        <Route path='/login' element={<LoginPage/> } />
+      </Routes>
      
-      <LoginPage login={login} />
+      
     </div>
   );
 }
