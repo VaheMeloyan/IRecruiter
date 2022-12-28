@@ -7,9 +7,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Formik, Form, useField } from 'formik'
 import * as yup from 'yup'
-import {useState} from 'react'
+import { useState } from 'react'
+import {Link} from 'react-router-dom'
 
-function App() {
+function SignUp() {
 
 const[userType,setUserType] = useState('worker')
 
@@ -30,8 +31,8 @@ const changeUserType = (event) => {
 
 
   return (
-    <div className="App">
-      <div className='container'>
+    <div className='signUp-container'>
+        <div className='container'>
         <div className='logo'>
           <HandshakeIcon sx={{ width: '80px', height: '80px' }} color='primary' />
           <p >IRecruiter</p>
@@ -141,13 +142,17 @@ const changeUserType = (event) => {
 
         
           <div className = 'input' >
-        <p>Already have an account?</p> <a href="https://www.google.com" style={{marginTop:'15px'}}>   Login</a></div>
+        <p>Already have an account?</p><Link to='/login'style={{marginTop:'15px'}}> Login</Link></div>
 
     </div>
-      </div>
+
+
+    </div>
+    
+      
       
 
   );
 }
 
-export default App;
+export default SignUp;

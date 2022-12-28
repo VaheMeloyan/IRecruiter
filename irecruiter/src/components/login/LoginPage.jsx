@@ -5,6 +5,7 @@ import "./LoginPageStyles.css";
 import { auth } from "../../db/firebase";
 import {useFormik} from 'formik'
 import {signInWithEmailAndPassword} from 'firebase/auth'
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 const LoginPage = ({login}) => {
 ////Declaring formik schema//////////////////////////
@@ -39,7 +40,12 @@ const LoginPage = ({login}) => {
   
   return (
     <div className="login-page-wrapper">
+       
       <div className="login-form">
+      <div className='logo'>
+          <HandshakeIcon sx={{ width: '80px', height: '80px' }} color='primary' />
+          <p >IRecruiter</p>
+        </div>
         <h1>Log in to IRecruiter</h1>
         <form onSubmit={formik.handleSubmit}>
           <TextField
@@ -74,7 +80,7 @@ const LoginPage = ({login}) => {
         </form>
         <div > Not registered on IRecruiter yet? </div>
         <div className="create-account">
-        <Link >Create your account</Link>
+        <Link to="/signup">Create your account</Link>
         </div>
       </div>
     </div>
