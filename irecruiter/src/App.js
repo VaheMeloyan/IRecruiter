@@ -4,14 +4,13 @@ import { db } from './db/firebase'
 import {collection, getDocs} from 'firebase/firestore'
 import Header from './components/header/Header';
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import SignUp from './components/SignUp'
+import LoginPage from './components/login/LoginPage';
 
 
 function App() {
   return (
-    <div>
-   <SignUp/>
+    <div className="App">
+      <LoginPage />
     </div>
   );
 }
