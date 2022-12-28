@@ -84,7 +84,7 @@ const changeUserType = (event) => {
                     <FormControlLabel 
                     value="worker" 
                     control={<Radio />} 
-                    label="Worker"
+                    label="Employee"
                     checked = {userType === 'worker'}
                     onChange={changeUserType} />
                     
