@@ -11,25 +11,30 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
 
   
+  const [currentUser, setCurrentUser] = useState(null)
+  const candidatesCollectionRef = collection(db, 'candidates');
+  
 
-  const usersCollectionRef = collection(db, 'users');
-  const [users, setUsers] = useState([])
-
-  useEffect(() => { 
-    const getUsers = async () => { 
-      const data = await getDocs(usersCollectionRef)
-      setUsers(data.docs.map(doc => ({...doc.data(), id:doc.id})))
-    }
-    getUsers()
-  },[])
+  // useEffect(() => { 
+  //   const getUsers = async () => { 
+  //     const data = await getDocs(usersCollectionRef)
+  //     setUsers(data.docs.map(doc => ({...doc.data(), id:doc.id})))
+  //   }
+  //   getUsers()
+  // },[])
 
 
-  console.log(users)
+  console.log(currentUser?.user)
+  
   return (
+
+    
+
     <div className="App">
       
       <Routes>
-        <Route path='/login' element={<LoginPage/> } />
+      <Route path='/' element={<Header /> } />
+        <Route path='/login' element={<LoginPage setCurrentUser={ setCurrentUser} /> } />
       </Routes>
      
       

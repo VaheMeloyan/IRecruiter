@@ -5,9 +5,10 @@ import "./LoginPageStyles.css";
 import { auth } from "../../db/firebase";
 import {signInWithEmailAndPassword} from 'firebase/auth'
 
-const LoginPage = ({login}) => {
+const LoginPage = ({setCurrentUser}) => {
   const [logInEmail, setLogInEmail] = useState("");
   const [logInPassword, setLogInPassword] = useState("");
+  
 
 
 
@@ -18,7 +19,8 @@ const LoginPage = ({login}) => {
         logInEmail,
         logInPassword
       )
-      console.log(user)
+   
+      setCurrentUser(user)
       setLogInEmail("")
       setLogInPassword("")
       
