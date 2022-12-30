@@ -1,13 +1,17 @@
-.App {
- height: 100vh;
+.main {
+  height: 100vh;
   box-shadow: inset;
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
 
-.container {
+.main a {
+  text-decoration:none;
+  color:blue
+}
+
+.signup-container {
  
   width: 500px;
   border: 1px solid hwb(0 86% 14%);
