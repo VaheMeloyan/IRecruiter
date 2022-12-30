@@ -19,13 +19,21 @@ const changeUserType = (event) => {
 
   function TextFieldWrapper({ ...props }) {
     const [field, mata] = useField(props.name)
-
+    
     if (mata && mata.touched && mata.error) {
       field.error = true
       field.helperText = mata.error
-    }
+      
+    } 
     return (<TextField   {...props}{...field} />)
   }
+  
+  
+
+ 
+  
+  
+
 
 
 
@@ -124,17 +132,23 @@ const changeUserType = (event) => {
                 />
               </div>
 
-            </Form>
-
-          </Formik>
-          <div className='input' style={{ marginButtom: '40px' }}>
-          <Button
+              <Button
+          
           sx={{
             width: '300px',
             borderRadius: '20px'
           }}
           variant="contained"
-          color="primary"> SIGN UP</Button>
+          color="primary"
+          
+          > SIGN UP</Button>
+
+            </Form>
+
+          </Formik>
+          <div className='input' style={{ marginButtom: '40px' }}>
+          
+
           </div>
         
         </div>
@@ -145,8 +159,6 @@ const changeUserType = (event) => {
 
     </div>
       </div>
-      
-
   );
 }
 
