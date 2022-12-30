@@ -70,6 +70,7 @@ const LoginPage = () => {
           <TextField
             sx={{ width: "50%", mb: 3 }}
             error={formik.errors.logInPassword && true}
+            type='password'
             size="small"
             name="logInPassword"
             label="password"
