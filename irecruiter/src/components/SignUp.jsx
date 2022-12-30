@@ -5,13 +5,13 @@ import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Formik, Form, useField } from 'formik'
+import { Formik, Form, useField,useFormikContext } from 'formik'
 import * as yup from 'yup'
 import {useState} from 'react'
 
 function App() {
 
-const[userType,setUserType] = useState('worker')
+const[userType,setUserType] = useState('employee')
 
 const changeUserType = (event) => {
   setUserType(event.target.value)
@@ -25,11 +25,31 @@ const changeUserType = (event) => {
       field.helperText = mata.error
       
     } 
+    
+    
     return (<TextField   {...props}{...field} />)
   }
   
+  function GetUserData(user){
+    console.log(user)
+  }
   
-
+function ButtonWrapper(){
+  const context = useFormikContext()
+context.values.userType = userType
+  return(
+<Button
+          onClick = {() => GetUserData(context.values)}
+          sx={{
+            width: '300px',
+            borderRadius: '20px'
+          }}
+          variant="contained"
+          color="primary"
+          
+          > SIGN UP</Button>
+  )
+}
  
   
   
@@ -69,7 +89,7 @@ const changeUserType = (event) => {
                   name='name'
                   sx={{ width: '500px' }}
                   size='small'
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Name*"
                   variant="outlined" />
               </div>
@@ -90,10 +110,10 @@ const changeUserType = (event) => {
                     onChange={changeUserType}/>
 
                     <FormControlLabel 
-                    value="worker" 
+                    value="employee" 
                     control={<Radio />} 
                     label="Employee"
-                    checked = {userType === 'worker'}
+                    checked = {userType === 'employee'}
                     onChange={changeUserType} />
                     
                   </RadioGroup>
@@ -105,7 +125,7 @@ const changeUserType = (event) => {
                   name='phoneNumber'
                   sx={{ width: '500px' }}
                   size='small'
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Phone Number*"
                   variant="outlined" />
               </div>
@@ -115,7 +135,7 @@ const changeUserType = (event) => {
                   name='email'
                   sx={{ width: '500px' }}
                   size='small'
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Email Address*"
                   variant="outlined" />
               </div>
@@ -125,23 +145,14 @@ const changeUserType = (event) => {
                   name='password'
                   sx={{ width: '500px' }}
                   size='small'
-                  id="outlined-password-input"
+                  className="outlined-password-input"
                   label="Password*"
                   type="password"
                   autoComplete="current-password"
                 />
               </div>
 
-              <Button
-          
-          sx={{
-            width: '300px',
-            borderRadius: '20px'
-          }}
-          variant="contained"
-          color="primary"
-          
-          > SIGN UP</Button>
+              <ButtonWrapper/>
 
             </Form>
 
