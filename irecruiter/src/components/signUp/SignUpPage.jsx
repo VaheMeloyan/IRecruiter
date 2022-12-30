@@ -10,13 +10,8 @@ import * as yup from "yup";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function SignUp() {
+function SignUpPage() {
   const [userType, setUserType] = useState("worker");
-
-
-
-
-  
 
   const changeUserType = (event) => {
     setUserType(event.target.value);
@@ -159,4 +154,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpPage;

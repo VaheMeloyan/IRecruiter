@@ -5,18 +5,25 @@ import {collection, getDocs} from 'firebase/firestore'
 import Header from './components/header/Header';
 import { useState } from 'react';
 import LoginPage from './components/login/LoginPage';
-import SignUp from './components/signUp/SignUp'
-import {Routes, Route} from 'react-router-dom'
+
+import { Routes, Route } from 'react-router-dom'
+import { AuthContextProvider } from './context/AuthContext';
+import ProfilePage from './components/profilePage/ProfilePage';
+import SignUpPage from './components/signUp/SignUpPage';
 
 
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/signup' element={<SignUp />} />
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path='/login' element={<LoginPage/>}/>
+          <Route path='/signup' element={<SignUpPage />}/>
+          <Route path='/profile' element={<ProfilePage/>}/>
+        </Routes>
+      </AuthContextProvider>
+    
    
     
       

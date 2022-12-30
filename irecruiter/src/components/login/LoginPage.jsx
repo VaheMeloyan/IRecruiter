@@ -1,13 +1,16 @@
 import { Button, TextField } from "@mui/material";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 import "./LoginPageStyles.css";
-import { auth } from "../../db/firebase";
 import { useFormik } from "formik";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 
-const LoginPage = ({ login }) => {
+const LoginPage = () => {
+
+  const { loginUser } = UserAuth()
+  const navigate = useNavigate()
+  
   ////Declaring formik schema//////////////////////////
   const formik = useFormik({
     initialValues: {
@@ -29,12 +32,12 @@ const LoginPage = ({ login }) => {
   ///////////Form submit handler/////////////////////////
   async function loginButtonHandler() {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
+      const user = await loginUser(
         formik.values.logInEmail,
         formik.values.logInPassword
       );
       console.log(user);
+      navigate('/profile')
     } catch (error) {
       console.log(error.message);
     }

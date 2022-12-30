@@ -8,7 +8,9 @@ import HelpIcon from "@mui/icons-material/Help";
 import { Link } from "react-router-dom";
 import "./HeaderStyles.css";
 
-const Header = () => {
+
+const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
+
   return (
     <Box>
       <AppBar position="sticky">
@@ -33,8 +35,9 @@ const Header = () => {
               <IconButton>
                 <HelpIcon sx={{ color: "white" }} />
               </IconButton>
-              <div className="container">
-                <div className="user_avatar">L</div>
+              <div className="cont">
+                <div className="user_avatar" >L </div>
+             
               </div>
             </div>
           </Toolbar>

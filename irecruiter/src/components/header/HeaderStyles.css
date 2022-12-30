@@ -1,6 +1,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
+   
 }
 
 .home_link {
@@ -31,7 +32,7 @@
 
 
 }
-.container {
+.cont {
     display: inline-block;
     vertical-align: middle;
     margin-left: 10px;
