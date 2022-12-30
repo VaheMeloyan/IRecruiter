@@ -13,6 +13,11 @@ import { Link } from "react-router-dom";
 function SignUp() {
   const [userType, setUserType] = useState("worker");
 
+
+
+
+  
+
   const changeUserType = (event) => {
     setUserType(event.target.value);
   };
