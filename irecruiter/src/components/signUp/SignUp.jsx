@@ -16,6 +16,7 @@ function SignUp() {
   const [userType, setUserType] = useState("employee");
   const { createUser } = UserAuth()
   const navigate = useNavigate()
+  const [error, setError] = useState("");
 
   const changeUserType = (event) => {
     setUserType(event.target.value);
@@ -30,10 +31,6 @@ function SignUp() {
     }
     return <TextField {...props} {...field} />;
   }
-
-
-
-  
 
   function ButtonWrapper() {
     const context = useFormikContext();
@@ -57,10 +54,14 @@ function SignUp() {
 
 
   
-  const createNewUser = async(data) => {  
-    await createUser(data.email, data.password)
-    navigate('/profile')
-    
+  const createNewUser = async (data) => {
+    try {
+      await createUser(data.email, data.password)
+      navigate('/profile')
+    } catch (e) { 
+      setError(e.message)
+    }
+   
   }
 
   return (
@@ -166,8 +167,9 @@ function SignUp() {
           </Formik>
           <div className="input" style={{ marginButtom: "40px" }}></div>
         </div>
-
+            <div style={{color:"red"}}>{error&&error}</div>
         <div className="input">
+          
           <p>Already have an account?</p>
           <Link to="/login" style={{margin:"15px 0 0 3px"}}>Login</Link>
         </div>
