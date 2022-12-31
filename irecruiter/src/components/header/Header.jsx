@@ -13,9 +13,9 @@ import { UserAuth } from "../../context/AuthContext";
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
-const {user, logout} = UserAuth()
+const {user, logout, currentUserData} = UserAuth()
   const navigate = useNavigate()
-  
+  const usersName = Object.keys(currentUserData).length&&currentUserData.name[0]
 
 
   const handleLogout = async () => {
@@ -51,7 +51,7 @@ const {user, logout} = UserAuth()
                 <HelpIcon sx={{ color: "white" }} />
               </IconButton>
               <div className="cont">
-                <div className="user_avatar" >L </div>
+                <div className="user_avatar" >{usersName[0]}</div>
              
               </div>
               <button onClick={handleLogout}>Logout</button>

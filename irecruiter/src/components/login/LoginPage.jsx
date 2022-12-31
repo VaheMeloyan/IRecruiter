@@ -36,7 +36,7 @@ const LoginPage = () => {
         formik.values.logInEmail,
         formik.values.logInPassword
       );
-      console.log(user);
+
       navigate('/profile')
     } catch (error) {
       console.log(error.message);

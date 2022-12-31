@@ -11,6 +11,9 @@ import { UserAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { db } from "../../db/firebase";
+import { doc, setDoc } from "firebase/firestore"; 
+
 
 function SignUp() {
   const [userType, setUserType] = useState("employee");
@@ -54,10 +57,16 @@ function SignUp() {
 
 
   
-  const createNewUser = async (data) => {
+  const createNewUser = (data) => {
+  
     try {
-      await createUser(data.email, data.password)
-      navigate('/profile')
+      createUser(data.email, data.password).then(cred => { 
+        setDoc(doc(db, 'users', cred.user.uid), {
+          name: data.name,
+          phone:data.phoneNumber
+        })
+      }).then(() => navigate('/profile'))
+      
     } catch (e) { 
       setError(e.message)
     }

@@ -4,11 +4,14 @@ import './ProfilePageStyles.css'
 import { Box, Button } from "@mui/material";
 import { useState } from 'react';
 import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
+import { UserAuth } from "../../context/AuthContext";
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false)
   const [showSignOutDrop, setShowSignOutDrop] = useState(false);
- 
+  const { currentUserData } = UserAuth()
+
+  const usersName = Object.keys(currentUserData).length&&currentUserData.name
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
 
@@ -26,7 +29,7 @@ const ProfilePage = () => {
         showSignOutDrop={showSignOutDrop}
       />
       <div>
-        <div className="greething-username">Hello Levon,</div>
+        <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
           Here are three steps to get you started.
         </div>
