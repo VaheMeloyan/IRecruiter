@@ -13,7 +13,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
-const {user, logout, currentUserData} = UserAuth()
+const {logout, currentUserData} = UserAuth()
   const navigate = useNavigate()
   const usersName = Object.keys(currentUserData).length&&currentUserData.name[0]
 
@@ -35,7 +35,7 @@ const {user, logout, currentUserData} = UserAuth()
               <IconButton>
                 <MenuIcon fontSize="large" sx={{ color: "white" }} />
                           </IconButton>
-                          <span><Link to="/"className="home_link">Home</Link></span>
+                          <span><Link to="/profile"className="home_link">Home</Link></span>
                       </div>
                    
             <input
