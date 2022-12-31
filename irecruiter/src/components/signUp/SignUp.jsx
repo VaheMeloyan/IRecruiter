@@ -28,7 +28,6 @@ function SignUp() {
       field.error = true;
       field.helperText = mata.error;
     }
-
     return <TextField {...props} {...field} />;
   }
 
@@ -59,7 +58,7 @@ function SignUp() {
 
   
   const createNewUser = async(data) => {  
-    createUser(data.email, data.password)
+    await createUser(data.email, data.password)
     navigate('/profile')
     
   }

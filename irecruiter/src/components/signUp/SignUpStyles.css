@@ -12,13 +12,10 @@
 }
 
 .signup-container {
- 
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
   width: 500px;
-  border: 1px solid hwb(0 86% 14%);
-  border-radius: 20px;
-  position: relative;
-  box-shadow: #d6d6d6 1px 1px 4px 4px;
-
 }
 
 
