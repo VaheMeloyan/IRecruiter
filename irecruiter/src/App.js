@@ -10,7 +10,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import ProfilePage from './components/profilePage/ProfilePage';
 import SignUpPage from './components/signUp/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
-import Landing from './components/Landing';
+import Landing from './components/landingPage/LandingPage';
 
 
 

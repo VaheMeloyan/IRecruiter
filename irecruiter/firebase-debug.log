@@ -1,0 +1,44 @@
+[debug] [2022-12-31T15:19:12.537Z] ----------------------------------------------------------------------
+[debug] [2022-12-31T15:19:12.539Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\milev\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-12-31T15:19:12.540Z] CLI Version:   11.19.0
+[debug] [2022-12-31T15:19:12.540Z] Platform:      win32
+[debug] [2022-12-31T15:19:12.540Z] Node Version:  v18.12.1
+[debug] [2022-12-31T15:19:12.541Z] Time:          Sat Dec 31 2022 19:19:12 GMT+0400 (Armenia Standard Time)
+[debug] [2022-12-31T15:19:12.541Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-31T15:19:12.622Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-31T15:19:12.623Z] > authorizing via signed-in user (levontonyan87@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\milev
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-12-31T15:19:25.006Z] Using project from CLI flag: irecruiter-e3065
+[debug] [2022-12-31T15:19:25.009Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/irecruiter-e3065 [none]
+[debug] [2022-12-31T15:19:25.492Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/irecruiter-e3065 200
+[debug] [2022-12-31T15:19:25.493Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/irecruiter-e3065 {"projectId":"irecruiter-e3065","projectNumber":"282227799845","displayName":"IRecruiter","name":"projects/irecruiter-e3065","resources":{"hostingSite":"irecruiter-e3065","realtimeDatabaseInstance":"irecruiter-e3065-default-rtdb"},"state":"ACTIVE","etag":"1_b7fc130e-5d9f-4674-8d32-8779ebbcae76"}
+[info] i  Using project irecruiter-e3065 (IRecruiter) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
