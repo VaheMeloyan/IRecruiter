@@ -16,7 +16,7 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => { 
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState({});
 
     const createUser = (email, password) => { 
         return createUserWithEmailAndPassword(auth, email,password)
@@ -30,13 +30,17 @@ export const AuthContextProvider = ({ children }) => {
         return signOut(auth)
     }
 
+
+    ////////Checking if user set//////////////
     useEffect(() => { 
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            console.log(currentUser)
         })
         return () => unsubscribe();
     },[])
 
+    console.log(user)
     return (
         <UserContext.Provider value={{createUser, loginUser, user, logout }}>
             {children}
