@@ -7,7 +7,7 @@ import {
     
 } from 'firebase/auth'
 import { auth, db } from '../db/firebase';
-import {collection, getDoc, doc} from 'firebase/firestore'
+import { getDoc, doc, } from 'firebase/firestore'
 
 
 
@@ -18,7 +18,8 @@ const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => { 
 
     const [user, setUser] = useState({});
-    const [currentUserData, setCurrentUserData] = useState([]);
+    const [currentUserData, setCurrentUserData] = useState({});
+    const [userType, setUserType] = useState('recruiter')
 
     
     
@@ -40,13 +41,16 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => { 
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            const currentUserDataRef = doc(db, 'users', currentUser.uid)
-            const getUserData = async () => { 
-              
-                
-                const data = await getDoc(currentUserDataRef)
-                setCurrentUserData(data.data())
-               
+            const currentUserDataRef = doc(db, userType, currentUser.uid)
+            const getUserData = async() => { 
+                const docSnap = await getDoc(currentUserDataRef)
+                    
+                if (docSnap.exists()) {
+                    setCurrentUserData(docSnap.data())
+                  } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                  }
             }
             getUserData()
            
@@ -58,9 +62,8 @@ export const AuthContextProvider = ({ children }) => {
 
 
   
-    console.log(currentUserData)
     return (
-        <UserContext.Provider value={{createUser, loginUser, user, logout, currentUserData }}>
+        <UserContext.Provider value={{createUser, loginUser, user, logout, currentUserData, setUserType, userType }}>
             {children}
         </UserContext.Provider>
     )

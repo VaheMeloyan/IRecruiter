@@ -16,8 +16,8 @@ import { doc, setDoc } from "firebase/firestore";
 
 
 function SignUp() {
-  const [userType, setUserType] = useState("employee");
-  const { createUser } = UserAuth()
+  
+  const { createUser, setUserType, userType } = UserAuth()
   const navigate = useNavigate()
   const [error, setError] = useState("");
 
@@ -58,21 +58,14 @@ function SignUp() {
 
   
   const createNewUser = (data) => {
-  
-    try {
-      createUser(data.email, data.password).then(cred => { 
-        setDoc(doc(db, 'users', cred.user.uid), {
+      createUser(data.email, data.password).then(cred => {
+        setDoc(doc(db, userType, cred.user.uid), {
           name: data.name,
-          phone:data.phoneNumber
+          phone: data.phoneNumber
         })
-      }).then(() => navigate('/profile'))
-      
-    } catch (e) { 
-      setError(e.message)
-    }
-   
-  }
-
+      }).then(() => navigate('/profile')).catch((e) => setError(e.message))
+}
+  
   return (
     <div className="main">
        <div className="signup-container">
@@ -176,7 +169,7 @@ function SignUp() {
           </Formik>
           <div className="input" style={{ marginButtom: "40px" }}></div>
         </div>
-            <div style={{color:"red"}}>{error&&error}</div>
+            <div style={{color:"red"}}>{error}</div>
         <div className="input">
           
           <p>Already have an account?</p>

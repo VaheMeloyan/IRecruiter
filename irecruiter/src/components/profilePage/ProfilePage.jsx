@@ -11,6 +11,7 @@ const ProfilePage = () => {
   const [showSignOutDrop, setShowSignOutDrop] = useState(false);
   const { currentUserData } = UserAuth()
 
+
   const usersName = Object.keys(currentUserData).length&&currentUserData.name
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
