@@ -5,7 +5,7 @@ import LoginPage from './components/login/LoginPage';
 import { Routes, Route } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext';
 import ProfilePage from './components/profilePage/ProfilePage';
-import SignUpPage from './components/signUp/SignUp';
+import SignUpPage from './components/signUp/SignUpPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './components/landingPage/LandingPage';
 

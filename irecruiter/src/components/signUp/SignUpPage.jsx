@@ -5,13 +5,21 @@ import Button from "@mui/material/Button";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form, useField, useFormikContext } from "formik";
 import * as yup from "yup";
+import { UserAuth } from "../../context/AuthContext"; 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { db } from "../../db/firebase";
+import { doc, setDoc } from "firebase/firestore"; 
 
-function SignUpPage() {
-  const [userType, setUserType] = useState("worker");
+
+function SignUp() {
+  
+  const { createUser, setUserType, userType } = UserAuth()
+  const navigate = useNavigate()
+  const [error, setError] = useState("");
 
   const changeUserType = (event) => {
     setUserType(event.target.value);
@@ -27,16 +35,45 @@ function SignUpPage() {
     return <TextField {...props} {...field} />;
   }
 
+  function ButtonWrapper() {
+    const context = useFormikContext();
+    context.values.userType = userType;
+    return (
+      <Button
+        onClick={() => createNewUser(context.values)}
+        sx={{
+          width: "300px",
+          borderRadius: "20px",
+        }}
+        variant="contained"
+        color="primary"
+      >
+        {" "}
+        SIGN UP
+      </Button>
+    );
+  }
+
+
+
+  
+  const createNewUser = (data) => {
+      createUser(data.email, data.password).then(cred => {
+        setDoc(doc(db, userType, cred.user.uid), {
+          name: data.name,
+          phone: data.phoneNumber
+        })
+      }).then(() => navigate('/profile')).catch((e) => setError(e.message))
+}
+  
   return (
-    <div className="signUp-container">
-      <div className="container">
+    <div className="main">
+       <div className="signup-container">
         <div className="logo">
-          <Link to="/">
-            <HandshakeIcon
-              sx={{ width: "80px", height: "80px" }}
-              color="primary"
-            />
-          </Link>
+          <HandshakeIcon
+            sx={{ width: "80px", height: "80px" }}
+            color="primary"
+          />
           <p>IRecruiter</p>
         </div>
         <div>
@@ -60,7 +97,7 @@ function SignUpPage() {
                   name="name"
                   sx={{ width: "500px" }}
                   size="small"
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Name*"
                   variant="outlined"
                 />
@@ -83,10 +120,10 @@ function SignUpPage() {
                     />
 
                     <FormControlLabel
-                      value="worker"
+                      value="employee"
                       control={<Radio />}
-                      label="Worker"
-                      checked={userType === "worker"}
+                      label="Employee"
+                      checked={userType === "employee"}
                       onChange={changeUserType}
                     />
                   </RadioGroup>
@@ -98,7 +135,7 @@ function SignUpPage() {
                   name="phoneNumber"
                   sx={{ width: "500px" }}
                   size="small"
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Phone Number*"
                   variant="outlined"
                 />
@@ -109,7 +146,7 @@ function SignUpPage() {
                   name="email"
                   sx={{ width: "500px" }}
                   size="small"
-                  id="outlined-basic"
+                  className="outlined-basic"
                   label="Email Address*"
                   variant="outlined"
                 />
@@ -120,38 +157,29 @@ function SignUpPage() {
                   name="password"
                   sx={{ width: "500px" }}
                   size="small"
-                  id="outlined-password-input"
+                  className="outlined-password-input"
                   label="Password*"
                   type="password"
                   autoComplete="current-password"
                 />
               </div>
+
+              <ButtonWrapper />
             </Form>
           </Formik>
-          <div className="input" style={{ marginButtom: "40px" }}>
-            <Button
-              sx={{
-                width: "300px",
-                borderRadius: "20px",
-              }}
-              variant="contained"
-              color="primary"
-            >
-              {" "}
-              SIGN UP
-            </Button>
-          </div>
+          <div className="input" style={{ marginButtom: "40px" }}></div>
         </div>
-
+            <div style={{color:"red"}}>{error}</div>
         <div className="input">
+          
           <p>Already have an account?</p>
-          <Link to="/login" style={{ marginTop: "15px" }}>
-            Login
-          </Link>
+          <Link to="/login" style={{margin:"15px 0 0 3px"}}>Login</Link>
         </div>
       </div>
     </div>
+     
+   
   );
 }
 
-export default SignUpPage;
+export default SignUp;
