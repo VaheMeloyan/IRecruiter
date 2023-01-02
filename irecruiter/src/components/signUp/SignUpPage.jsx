@@ -17,7 +17,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 function SignUp() {
   
-  const { createUser, setUserType, userType } = UserAuth()
+  const { createUser, setUserType, userType, settingUser } = UserAuth()
   const navigate = useNavigate()
   const [error, setError] = useState("");
 
@@ -58,12 +58,25 @@ function SignUp() {
 
   
   const createNewUser = (data) => {
-      createUser(data.email, data.password).then(cred => {
-        setDoc(doc(db, userType, cred.user.uid), {
-          name: data.name,
+    createUser(data.email, data.password).then(cred => {
+      let object = userType === 'employee' ?
+        {
+          name: data.name[0].toUpperCase() + data.name.slice(1),
+          phone: data.phoneNumber,
+          diploma: null,
+          university: null,
+          gender: null,
+          birthdate: null,
+          candidateAddress: null,
+          createdBy:cred.user.uid
+
+        } : {
+          name: data.name[0].toUpperCase() + data.name.slice(1),
           phone: data.phoneNumber
-        })
-      }).then(() => navigate('/profile')).catch((e) => setError(e.message))
+        }
+        setDoc(doc(db, userType, cred.user.uid), object)
+        return cred.user.uid
+      }).then((id) => settingUser(id)).then(() => navigate('/profile')).catch((e) => setError(e.message))
 }
   
   return (

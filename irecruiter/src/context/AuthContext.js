@@ -40,30 +40,31 @@ export const AuthContextProvider = ({ children }) => {
     ////////Checking if user set//////////////
     useEffect(() => { 
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            const currentUserDataRef = doc(db, userType, currentUser.uid)
-            const getUserData = async() => { 
-                const docSnap = await getDoc(currentUserDataRef)
-                    
-                if (docSnap.exists()) {
-                    setCurrentUserData(docSnap.data())
-                  } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                  }
-            }
-            getUserData()
-           
+            setUser(currentUser);  
         })
-        
         return () => unsubscribe();
     }, [])
     
 
+    function settingUser (id)  { 
+        const currentUserDataRef = doc(db, userType,id)
+        const getUserData = async() => { 
+            const docSnap = await getDoc(currentUserDataRef)
+            if (docSnap.exists()) {
+                setCurrentUserData(docSnap.data())
+                console.log("done")
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+        }
+        getUserData()
+       
+    }
 
   
     return (
-        <UserContext.Provider value={{createUser, loginUser, user, logout, currentUserData, setUserType, userType }}>
+        <UserContext.Provider value={{createUser, loginUser, user, logout, currentUserData, setUserType, userType, settingUser }}>
             {children}
         </UserContext.Provider>
     )
