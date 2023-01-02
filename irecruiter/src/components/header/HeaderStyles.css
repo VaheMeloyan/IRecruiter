@@ -13,6 +13,16 @@
     vertical-align: middle;
 }
 
+@media screen and  (max-width: 900px) {
+    .home_link {
+      display: none;
+    }
+    .help_icon {
+        display: none;
+    }
+    
+    }
+
 .toolbar {
     width: 100%;
     justify-content: space-between;

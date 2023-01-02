@@ -47,8 +47,8 @@ const {logout, currentUserData} = UserAuth()
               <IconButton>
                 <AddCircleIcon sx={{ color: "white" }} />
               </IconButton>
-              <IconButton>
-                <HelpIcon sx={{ color: "white" }} />
+              <IconButton className="help_icon">
+                <HelpIcon sx={{ color: "white"}} />
               </IconButton>
               <div className="cont">
                 <div className="user_avatar" >{usersName[0]}</div>
