@@ -7,10 +7,9 @@ import { useFormik } from "formik";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 
 const LoginPage = () => {
+  const { loginUser, settingUser } = UserAuth();
+  const navigate = useNavigate();
 
-  const { loginUser } = UserAuth()
-  const navigate = useNavigate()
-  
   ////Declaring formik schema//////////////////////////
   const formik = useFormik({
     initialValues: {
@@ -30,17 +29,11 @@ const LoginPage = () => {
   });
 
   ///////////Form submit handler/////////////////////////
-  async function loginButtonHandler() {
-    try {
-      const user = await loginUser(
-        formik.values.logInEmail,
-        formik.values.logInPassword
-      );
-
-      navigate('/profile')
-    } catch (error) {
-      console.log(error.message);
-    }
+  function loginButtonHandler() {
+    loginUser(formik.values.logInEmail, formik.values.logInPassword)
+      .then((res) => settingUser(res.user.uid))
+      .then(() => navigate("/profile"))
+      .catch((error) => console.log(error.message));
   }
 
   return (
@@ -70,7 +63,7 @@ const LoginPage = () => {
           <TextField
             sx={{ width: "50%", mb: 3 }}
             error={formik.errors.logInPassword && true}
-            type='password'
+            type="password"
             size="small"
             name="logInPassword"
             label="password"

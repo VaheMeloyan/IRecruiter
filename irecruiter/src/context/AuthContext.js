@@ -52,7 +52,6 @@ export const AuthContextProvider = ({ children }) => {
             const docSnap = await getDoc(currentUserDataRef)
             if (docSnap.exists()) {
                 setCurrentUserData(docSnap.data())
-                console.log("done")
               } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
