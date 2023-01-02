@@ -5,9 +5,11 @@ import { UserAuth } from "../../context/AuthContext";
 import "./LoginPageStyles.css";
 import { useFormik } from "formik";
 import HandshakeIcon from "@mui/icons-material/Handshake";
+import { useState } from 'react';
 
 const LoginPage = () => {
   const { loginUser, settingUser } = UserAuth();
+  const [error, setError] = useState(false)
   const navigate = useNavigate();
 
   ////Declaring formik schema//////////////////////////
@@ -33,7 +35,7 @@ const LoginPage = () => {
     loginUser(formik.values.logInEmail, formik.values.logInPassword)
       .then((res) => settingUser(res.user.uid))
       .then(() => navigate("/profile"))
-      .catch((error) => console.log(error.message));
+      .catch((error) => setError(error.message));
   }
 
   return (
@@ -82,6 +84,7 @@ const LoginPage = () => {
         </form>
         <div> Not registered on IRecruiter yet? </div>
         <div className="create-account">
+        <div style={{color:"red"}}>{error}</div>
           <Link to="/signup">Create your account</Link>
         </div>
       </div>

@@ -47,14 +47,22 @@ export const AuthContextProvider = ({ children }) => {
     
 
     function settingUser (id)  { 
-        const currentUserDataRef = doc(db, userType,id)
+        const currentUserDataRef = doc(db, userType, id)
+       
         const getUserData = async() => { 
             const docSnap = await getDoc(currentUserDataRef)
             if (docSnap.exists()) {
                 setCurrentUserData(docSnap.data())
               } else {
                 // doc.data() will be undefined in this case
-                console.log("No such document!");
+                const currentUserDataRef = doc(db, 'employee', id)
+                const docSnap = await getDoc(currentUserDataRef)
+                if (docSnap.exists()) {
+                    setCurrentUserData(docSnap.data())
+                } else { 
+                    console.log("No such user!");
+                }
+                
               }
         }
         getUserData()
