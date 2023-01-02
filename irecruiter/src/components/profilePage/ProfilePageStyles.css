@@ -10,7 +10,7 @@
   text-align:center;
    line-height :80px;
    color: #606060;
-}
+   }
 
 .greething-username {
   font-size:40px;
@@ -48,13 +48,24 @@
   font-weight:500;
 }
 
-.box-container {
+.create-candidate-box-container {
   margin-top:50px;
   display:flex;
  justify-content:center;
 }
 
- 
+@media screen and  (max-width: 800px) {
+  .create-candidate-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top:50px;
+  }
+
+  .greething {
+    display: none;
+  }
+}
 
 .box h4 {
   margin:0

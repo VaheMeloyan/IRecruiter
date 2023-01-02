@@ -35,7 +35,7 @@ const ProfilePage = () => {
           Here are three steps to get you started.
         </div>
       </div>
-      <div className="box-container">
+      <div className="create-candidate-box-container">
         <div className="box" onClick={createCandidate}>
           <div>
             <img
