@@ -8,6 +8,11 @@ import ProfilePage from './components/profilePage/ProfilePage';
 import SignUpPage from './components/signUp/SignUpPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './components/landingPage/LandingPage';
+import Layout from './components/landing/Layout';
+import Home from './components/landing/Home';
+import About from './components/landing/About';
+import Contact from './components/landing/Contact'
+
 
 
 
@@ -16,7 +21,12 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <Routes>
-          <Route path='/' element={<Landing/>} />
+        <Route path='/' element={<Layout/>}>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+        </Route> 
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/signup' element={<SignUpPage />}/>
           <Route path='/profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
