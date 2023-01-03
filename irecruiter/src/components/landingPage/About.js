@@ -2,7 +2,7 @@ import './Landing.css'
 
 function About(){
     return(
-        <div>
+        <div className='about'>
             <div className="about-header">
                 <h1>About Us</h1>
             </div>

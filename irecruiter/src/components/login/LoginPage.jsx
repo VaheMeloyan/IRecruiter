@@ -49,7 +49,7 @@ const LoginPage = () => {
             />
           </Link>
         </div>
-        <h1>Log in to IRecruiter</h1>
+        <h1>Sign in to IRecruiter</h1>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             sx={{ width: "50%", m: 3 }}

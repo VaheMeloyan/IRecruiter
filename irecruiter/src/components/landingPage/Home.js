@@ -1,6 +1,7 @@
 import './Landing.css'
 import React from 'react' 
 import hr from '../../images/hr.png'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -10,8 +11,8 @@ function Home() {
             <p className='homepagetext'> Recruitment website which will  help you to find top talents for your business,
                as well as the best job for your future career. </p>
             <div className='leftbuttons'>
-              <a href='#signin' className='recruiterbutton'>Start as Recruiter</a>
-              <a href='#signin' className='employeebutton'>Start as Employee</a>
+              <Link to='/signup' className='recruiterbutton'>Start as Recruiter</Link>
+              <Link to='/signup' className='employeebutton'>Start as Employee</Link>
             </div>
         </div>
         <img src={hr} alt='hr.png' className='main-picture'></img>

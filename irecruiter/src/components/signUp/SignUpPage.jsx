@@ -83,10 +83,10 @@ function SignUp() {
     <div className="main">
        <div className="signup-container">
         <div className="logo">
-          <HandshakeIcon
+          <Link to='/'><HandshakeIcon
             sx={{ width: "80px", height: "80px" }}
             color="primary"
-          />
+          /></Link>
           <p>IRecruiter</p>
         </div>
         <div>

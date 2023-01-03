@@ -3,21 +3,38 @@
     position: relative;
     height: 90px;
     background-color: #d4e8ff;
+    display: flex;
+    justify-content: space-between;
   }
   
-  .navlink{
+  .navlink {
     margin-top: 0px; 
     margin-bottom: 0px; 
     margin-left: 60px; 
     margin-right: 0px;
     padding: 25px 20px;
     display: flex;
-    justify-content:fle;
+    align-items:center;
+    vertical-align: middle;
     font-size:x-large;
     font-weight:bolder;
-    text-decoration-line: none;
+    
   }
   
+  .navlink a {
+    text-decoration: none;
+    margin: 0 20px;
+    color:black;
+
+  }
+ 
+  .navlink a:hover {
+    color:rgb(49, 72, 199);
+    text-decoration: underline;
+
+  }
+
+
   .container{
     display: flex;
     text-align: left;
@@ -32,8 +49,14 @@
     max-width: 580px;
   }
   
+  .about {
+    display: flex;
   
-  .logo {
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .nav-logo {
     width: 60px;
     height: 70px;
     margin-top: -15px;
@@ -46,6 +69,7 @@
     margin-bottom: 20px;
     flex: 0 0 auto;
     background-color: #1ebd53;
+    color:white;
     margin-left: 20px;
     padding: 20px 30px;
     border-radius: 12px;
@@ -110,11 +134,10 @@
   }
   
   .about-text {
-    justify-content: center;
-    text-align:center;
-    width: 800px;
+
+   text-align: center;
     font-size: 20px;
-    margin-left: 350px;
+    margin:30px 50px;
   }
   
   .contact-heading {

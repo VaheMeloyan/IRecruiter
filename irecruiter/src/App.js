@@ -7,11 +7,12 @@ import { AuthContextProvider } from './context/AuthContext';
 import ProfilePage from './components/profilePage/ProfilePage';
 import SignUpPage from './components/signUp/SignUpPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import Landing from './components/landingPage/LandingPage';
-import Layout from './components/landing/Layout';
-import Home from './components/landing/Home';
-import About from './components/landing/About';
-import Contact from './components/landing/Contact'
+
+
+import Layout from './components/landingPage/Layout';
+import Home from './components/landingPage/Home';
+import About from './components/landingPage/About';
+import Contact from './components/landingPage/Contact'
 
 
 
