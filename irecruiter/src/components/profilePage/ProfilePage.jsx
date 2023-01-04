@@ -16,7 +16,11 @@ const ProfilePage = () => {
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
 
-
+  const styles = {
+    button: {
+      width:"180px"
+    }
+  }
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
@@ -50,6 +54,7 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
+              sx={styles.button }
               className="mui-btn"
               size="small">Create a Candidate
             </Button>
@@ -71,8 +76,9 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
+              sx={styles.button }
               className="mui-btn"
-              size="small">Create a Candidate
+              size="small">Create a Client
             </Button>
           </Box>
         </div>
@@ -94,8 +100,9 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
+              sx={styles.button }
               className="mui-btn"
-              size="small">Create a Candidate
+              size="small">Create a Job
             </Button>
           </Box>
         </div>
