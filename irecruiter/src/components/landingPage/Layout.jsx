@@ -13,7 +13,7 @@ function Layout() {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="landing-navbar">
         <div>
           <Link to="/">
             <HandshakeIcon

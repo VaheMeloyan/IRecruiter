@@ -1,0 +1,25 @@
+.skills-container {
+  border: 1px solid#E0E0E0;
+  border-radius: 5px;
+  height: 200px;
+}
+
+.skills-title {
+  width: 100%;
+  background-color: #E8E8E8;
+  text-align: left;
+  padding: 10px 0px;
+}
+
+.skills-title span {
+  margin-left: 10px;
+}
+
+.add-btn {
+  background-color: #6200e3;
+  margin: 20px 50px 50px 50px;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}

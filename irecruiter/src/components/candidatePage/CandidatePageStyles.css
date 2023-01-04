@@ -1,0 +1,13 @@
+.candidatePage-container {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  grid-gap: 8px;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 850px) {
+  .candidatePage-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

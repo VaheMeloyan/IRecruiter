@@ -13,6 +13,7 @@ import Layout from './components/landingPage/Layout';
 import Home from './components/landingPage/Home';
 import About from './components/landingPage/About';
 import Contact from './components/landingPage/Contact'
+import CandidatePage from './components/candidatePage/CandidatePage';
 
 
 
@@ -30,7 +31,8 @@ function App() {
         </Route> 
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/signup' element={<SignUpPage />}/>
-          <Route path='/profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
+          <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+          <Route path='/profile/candidates' element={<CandidatePage/>}/>
         </Routes>
       </AuthContextProvider>
     

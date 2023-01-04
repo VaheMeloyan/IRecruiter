@@ -1,42 +1,39 @@
-import React from "react";
-import Header from "../header/Header";
-import './ProfilePageStyles.css'
+import React from 'react'
 import { Box, Button } from "@mui/material";
-import { useState } from 'react';
-import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import { UserAuth } from "../../context/AuthContext";
-import CandidatePage from './../candidatePage/CandidatePage';
-
-const ProfilePage = () => {
-  const [showModal, setShowModal] = useState(false)
-  const [showSignOutDrop, setShowSignOutDrop] = useState(false);
-  const { currentUserData } = UserAuth()
+import CreateCandidate from "../CreateCandidateModal/CreateCandidate";
+import { useState } from 'react';
 
 
-  const usersName = Object.keys(currentUserData).length&&currentUserData.name
-
-  if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
 
 
+
+const { currentUserData } = UserAuth()
+
+
+const usersName = Object.keys(currentUserData).length&&currentUserData.name
+
+
+
+
+
+const BlankProfilePage = () => {
+    const [showModal, setShowModal] = useState(false)
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
     setShowModal((prev) => !prev)
-  } 
-  
-  
-  return (
-    <div className="profile-container">
-      <Header setShowSignOutDrop={setShowSignOutDrop}
-        showSignOutDrop={showSignOutDrop}
-      />
-      <CandidatePage/>
-      {/* <div>
-        <div className="greething-username">Hello {usersName},</div>
+    } 
+    
+
+    
+    return (
+      <div>
+    <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
           Here are three steps to get you started.
         </div>
-      </div>
+      
       <div className="create-candidate-box-container">
         <div className="box" onClick={createCandidate}>
           <div>
@@ -101,9 +98,9 @@ const ProfilePage = () => {
             </Button>
           </Box>
         </div>
-      </div> */}
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default BlankProfilePage
