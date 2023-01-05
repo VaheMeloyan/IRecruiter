@@ -8,12 +8,19 @@ import HelpIcon from "@mui/icons-material/Help";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./HeaderStyles.css";
 import { UserAuth } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
-const {logout, currentUserData} = UserAuth()
+  const { logout, currentUserData, settingUser,user } = UserAuth()
+    /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
+    useEffect(() => { 
+      if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
+        settingUser(user.uid)
+      }
+    })
   const navigate = useNavigate()
   const usersName = Object.keys(currentUserData).length&&currentUserData.name[0]
 

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "../header/Header";
 import './DashboardStyles.css'
 import { Box, Button } from "@mui/material";
 import { useState } from 'react';
@@ -9,7 +8,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
-  const [showSignOutDrop, setShowSignOutDrop] = useState(false);
+ 
   const { currentUserData, settingUser, user } = UserAuth()
 
 
