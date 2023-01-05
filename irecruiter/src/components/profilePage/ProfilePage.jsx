@@ -2,14 +2,24 @@ import React from "react";
 import Header from "../header/Header";
 import './ProfilePageStyles.css'
 import { Box, Button } from "@mui/material";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import { UserAuth } from "../../context/AuthContext";
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false)
   const [showSignOutDrop, setShowSignOutDrop] = useState(false);
-  const { currentUserData } = UserAuth()
+  const { currentUserData, settingUser, user } = UserAuth()
+
+
+
+  /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
+  useEffect(() => { 
+    if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
+      settingUser(user.uid)
+    }
+  })
+
 
 
   const usersName = Object.keys(currentUserData).length&&currentUserData.name
@@ -18,7 +28,8 @@ const ProfilePage = () => {
 
   const styles = {
     button: {
-      width:"180px"
+      width: "200px",
+      
     }
   }
 
