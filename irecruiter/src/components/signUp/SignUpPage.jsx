@@ -76,7 +76,9 @@ function SignUp() {
         }
         setDoc(doc(db, userType, cred.user.uid), object)
         return cred.user.uid
-      }).then((id) => settingUser(id)).then(() => navigate('/profile')).catch((e) => setError(e.message))
+    }).then((id) => settingUser(id))
+      .then(() => navigate('/dashboard'))
+      .catch((e) => setError(e.message))
 }
   
   return (

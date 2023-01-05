@@ -5,7 +5,7 @@ import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import HelpIcon from "@mui/icons-material/Help";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./HeaderStyles.css";
 import { UserAuth } from "../../context/AuthContext";
 
@@ -27,7 +27,8 @@ const {logout, currentUserData} = UserAuth()
      }
    }
   return (
-    <Box>
+    <>
+     <Box>
       <AppBar position="sticky">
         <Box className="navbar">
           <Toolbar className="toolbar">
@@ -35,7 +36,8 @@ const {logout, currentUserData} = UserAuth()
               <IconButton>
                 <MenuIcon fontSize="large" sx={{ color: "white" }} />
                           </IconButton>
-                          <span><Link to="/profile"className="home_link">Home</Link></span>
+                          <span><Link to="/dashboard
+                          "className="home_link">Home</Link></span>
                       </div>
                    
             <input
@@ -60,6 +62,9 @@ const {logout, currentUserData} = UserAuth()
         </Box>
       </AppBar>
     </Box>
+    <Outlet/>
+    </>
+   
   );
 };
 

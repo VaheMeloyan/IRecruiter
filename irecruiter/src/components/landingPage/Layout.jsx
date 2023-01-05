@@ -2,12 +2,11 @@ import "./Landing.css";
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import HandshakeIcon from "@mui/icons-material/Handshake";
-import { Button  } from "@mui/material";
+import { Button } from "@mui/material";
+import { UserAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Layout() {
-
- 
-
 
 
 

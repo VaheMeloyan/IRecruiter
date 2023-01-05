@@ -1,34 +1,45 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import Header from "../header/Header";
+import './DashboardStyles.css'
 import { Box, Button } from "@mui/material";
-import { UserAuth } from "../../../context/AuthContext";
-import CreateCandidate from "../CreateCandidateModal/CreateCandidate";
 import { useState } from 'react';
+import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
+import { UserAuth } from "../../context/AuthContext";
+
+
+const Dashboard = () => {
+  const [showModal, setShowModal] = useState(false)
+  const [showSignOutDrop, setShowSignOutDrop] = useState(false);
+  const { currentUserData, settingUser, user } = UserAuth()
 
 
 
+  /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
+  useEffect(() => { 
+    if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
+      settingUser(user.uid)
+    }
+  })
 
 
-
-
-
-
-
-
-
-
-
-const BlankProfilePage = () => {
-    const [showModal, setShowModal] = useState(false)
-  const { currentUserData } = UserAuth()
+  /////////////CREATE CANDIDATE HANDLER////////////////////////
   const usersName = Object.keys(currentUserData).length&&currentUserData.name
+
+  if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
+
+
+
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
     setShowModal((prev) => !prev)
-    } 
-    
+  } 
+  
 
-    
-    return (
+
+
+
+  return (
+    <div className="profile-container">
       <div>
     <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
@@ -101,7 +112,10 @@ const BlankProfilePage = () => {
         </div>
       </div>
     </div>
-  )
-}
+      
+      
+    </div>
+  );
+};
 
-export default BlankProfilePage
+export default Dashboard;
