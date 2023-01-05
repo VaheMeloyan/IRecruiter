@@ -14,6 +14,9 @@ import Home from './components/landingPage/Home';
 import About from './components/landingPage/About';
 import Contact from './components/landingPage/Contact'
 import CandidatePage from './components/candidatePage/CandidatePage';
+import Summary from './components/candidatePage/summaryPage/Summary';
+import JobsTab from './components/candidatePage/jobs/JobsTab';
+import ResumeTab from './components/candidatePage/resume/ResumeTab';
 
 
 
@@ -30,9 +33,20 @@ function App() {
           <Route path='/contact' element={<Contact/>}/>
         </Route> 
           <Route path='/login' element={<LoginPage/>}/>
-          <Route path='/signup' element={<SignUpPage />}/>
-          <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-          <Route path='/profile/candidates' element={<CandidatePage/>}/>
+          <Route path='/signup' element={<SignUpPage />} />
+          
+          <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>}>
+         
+              <Route path="summary" element={ <Summary />} />
+              <Route path="jobs" element={<JobsTab />} />
+              <Route path="resume" element={<ResumeTab />} />
+      
+          </Route>
+
+
+
+          
+          
         </Routes>
       </AuthContextProvider>
     

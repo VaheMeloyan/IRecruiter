@@ -16,7 +16,7 @@
 .line {
   display: flex;
   justify-content: space-between;
-  padding: 10px 5px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
 }

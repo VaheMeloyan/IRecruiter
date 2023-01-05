@@ -32,10 +32,10 @@ const CandidatePageHeader = () => {
           <Link to="summary">
             <li> <div className="link-div"><SummarizeIcon sx={styles.icons} />Summary</div></li>
           </Link>
-          <Link to="cadidates/jobs">
+          <Link to="jobs">
             <li><div className="link-div"><WorkIcon sx={styles.icons}/>Jobs</div></li>
           </Link>
-          <Link to="cadidates/resume">
+          <Link to="resume">
             <li><div className="link-div"><DescriptionIcon sx={styles.icons}/>Resume</div></li>
           </Link>
         </ul>

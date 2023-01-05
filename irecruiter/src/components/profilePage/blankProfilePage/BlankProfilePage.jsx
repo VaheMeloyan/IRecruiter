@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button } from "@mui/material";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
 import CreateCandidate from "../CreateCandidateModal/CreateCandidate";
 import { useState } from 'react';
 
@@ -8,10 +8,10 @@ import { useState } from 'react';
 
 
 
-const { currentUserData } = UserAuth()
 
 
-const usersName = Object.keys(currentUserData).length&&currentUserData.name
+
+
 
 
 
@@ -19,7 +19,8 @@ const usersName = Object.keys(currentUserData).length&&currentUserData.name
 
 const BlankProfilePage = () => {
     const [showModal, setShowModal] = useState(false)
-
+  const { currentUserData } = UserAuth()
+  const usersName = Object.keys(currentUserData).length&&currentUserData.name
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
     setShowModal((prev) => !prev)
