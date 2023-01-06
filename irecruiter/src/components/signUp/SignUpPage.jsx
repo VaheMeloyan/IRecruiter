@@ -86,7 +86,8 @@ function SignUp() {
 
         } : {
           name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber
+          phone: data.phoneNumber,
+          organisation:data.organisation
         }
         setDoc(doc(db, userType, cred.user.uid), object)
         return cred.user.uid
