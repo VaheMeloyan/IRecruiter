@@ -6,10 +6,18 @@ import './CandidatesListStyles.css'
 import 'ag-grid-community/styles//ag-grid.css';
 import 'ag-grid-community/styles//ag-theme-alpine.css';
 import { Button } from '@mui/material';
+import { Route, Link } from 'react-router-dom';
 
 
 
-
+const SimpleComp = p => {
+  
+ console.log(p)
+  return (
+    <Link to={`${p.data.id}`} >{p.value}</Link>
+    )
+  
+}
 
 
 const CandidatesList = () => {
@@ -25,6 +33,7 @@ const CandidatesList = () => {
     let arr = []
     getDocs(collection(db, "employee")).then((docs) => {
       docs.forEach(doc => arr.push(doc.data()))
+      console.log(arr)
       setDocs(arr)
     })
     
@@ -32,17 +41,17 @@ const CandidatesList = () => {
 
   //////DEF AGGrid options///////////////////////////////////////
   const  rowData =  docs
-  const columnDefs = [
-    {headerName: "Candidate Name", field: "name"},
+  const [columnDefs , setColumnDefs] = useState( [
+    { cellRenderer: SimpleComp, field: "name", cellClass:"cellClass"},
     { headerName: "Phone", field: "phone" },
     { headerName: "Candidate Location", field: "candidateAddress" },
-    { headerName: "Current Position", field: "phone" },
-    { headerName: "Current Company", field: "phone" },
-    { headerName: "Current salary", field: "phone" },
-    { headerName: "Expected salary", field: "phone" },
+    { headerName: "Current Position", field: "currentPosition" },
+    { headerName: "Current Company", field: "currentCompany" },
+    { headerName: "Current salary", field: "currentSalary" },
+    { headerName: "Expected salary", field: "expectedSalary" },
     { headerName: "Candidate Created", field: "created" },
-    { headerName: "Current salary", field: "phone" },
-  ]
+   
+  ])
 
   const defaultColDef = useMemo(() => {
     return {
@@ -51,6 +60,9 @@ const CandidatesList = () => {
       filter: true,
     };
   }, []);
+
+
+
 
   const styles = {
     button: {
@@ -73,9 +85,9 @@ console.log(docs)
 
      <div className="ag-theme-alpine"
 				style={{
-					height: '50vh',
+					height: '75vh',
           width: '100%',
-          border:"1px solid black"
+          textAlign:'left'
 				}}
 			>
 				<AgGridReact

@@ -69,6 +69,7 @@ function SignUp() {
           birthdate: null,
           candidateAddress: null,
           createdBy: cred.user.uid,
+          id:cred.user.uid,
           created:new Date().toLocaleString()
 
         } : {
