@@ -1,17 +1,41 @@
-import {
-    AppBar, Box, IconButton, Toolbar
-} from "@mui/material";
-import React from "react";
+import { Box, CssBaseline, IconButton, Toolbar} from "@mui/material";
+import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import HelpIcon from "@mui/icons-material/Help";
 import { Link, useNavigate } from "react-router-dom";
 import "./HeaderStyles.css";
 import { UserAuth } from "../../context/AuthContext";
+import Sidebar from "../sidebar/Sidebar";
+import MuiAppBar from '@mui/material/AppBar';
+import { styled } from '@mui/material/styles';
+
+
+const drawerWidth = 240;
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
 
 
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
+
+const [openDrawer, setOpenDrawer]= useState(false)  
 
 const {logout, currentUserData} = UserAuth()
   const navigate = useNavigate()
@@ -27,12 +51,18 @@ const {logout, currentUserData} = UserAuth()
      }
    }
   return (
-    <Box>
-      <AppBar position="sticky">
+    <Box sx={{display:"flex"}}>
+      <CssBaseline/>
+      <AppBar position="fixed">
         <Box className="navbar">
           <Toolbar className="toolbar">
             <div>
-              <IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={()=>{setOpenDrawer(!openDrawer)}}
+              edge="start"
+            >
                 <MenuIcon fontSize="large" sx={{ color: "white" }} />
                           </IconButton>
                           <span><Link to="/profile"className="home_link">Home</Link></span>
@@ -59,6 +89,7 @@ const {logout, currentUserData} = UserAuth()
           </Toolbar>
         </Box>
       </AppBar>
+      {openDrawer?<Sidebar/>:<></>}
     </Box>
   );
 };
