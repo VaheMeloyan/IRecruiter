@@ -1,0 +1,9 @@
+.create-candidate-header{
+  display: flex;
+  align-items: left;
+   justify-content: left;
+flex-direction: column;
+    padding:0 10px;
+}
+
+

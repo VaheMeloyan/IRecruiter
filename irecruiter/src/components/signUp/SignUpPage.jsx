@@ -68,7 +68,8 @@ function SignUp() {
           gender: null,
           birthdate: null,
           candidateAddress: null,
-          createdBy:cred.user.uid
+          createdBy: cred.user.uid,
+          created:new Date().toLocaleString()
 
         } : {
           name: data.name[0].toUpperCase() + data.name.slice(1),
