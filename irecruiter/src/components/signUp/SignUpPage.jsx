@@ -54,6 +54,20 @@ function SignUp() {
     );
   }
 
+  function Organisation(){
+    if(userType === 'recruiter') return(
+      <div className="input">
+                <TextFieldWrapper
+                  name="organisation"
+                  sx={{ width: "500px" }}
+                  size="small"
+                  className="outlined-basic"
+                  label="Organisation*"
+                  variant="outlined"
+                />
+              </div>
+    )
+  }
 
 
   
@@ -93,12 +107,14 @@ function SignUp() {
           <Formik
             initialValues={{
               name: "",
+              organisation:"",
               phoneNumber: "",
               email: "",
               password: "",
             }}
             validationSchema={yup.object().shape({
               name: yup.string().required("Necessary"),
+              organisation: yup.string().required("Necessary"),
               phoneNumber: yup.string().required("Necessary"),
               email: yup.string().email("Invalid email").required("Necessary"),
               password: yup.string().required("Necessary"),
@@ -142,6 +158,8 @@ function SignUp() {
                   </RadioGroup>
                 </div>
               </div>
+
+              <Organisation/>
 
               <div className="input">
                 <TextFieldWrapper
