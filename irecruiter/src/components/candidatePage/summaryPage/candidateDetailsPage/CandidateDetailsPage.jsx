@@ -14,9 +14,7 @@ const AddButton = ({ target }) => {
 
 
 
-const CandidatesDetailsPage = () => {
-
-  const {currentUserData} = UserAuth()
+const CandidatesDetailsPage = ({candidate}) => {
 
   return (
     <div className="candidates-details-container">
@@ -27,14 +25,14 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Candidate Name</span>
           <span className="rigth-column">
-            {currentUserData?.name ? currentUserData.name : <AddButton target="name" />}
+            {candidate?.name ? candidate.name : <AddButton target="name" />}
           </span>
         </div>
         <div className="line">
           <span>Candidate Referance</span>
           <span className="rigth-column">
-            {currentUserData?.referance ? (
-              currentUserData.referance
+            {candidate?.referance ? (
+              candidate.referance
             ) : (
               <AddButton target="referance" />
             )}
@@ -43,8 +41,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Diploma</span>
           <span className="rigth-column">
-            {currentUserData?.diploma ? (
-              currentUserData.diploma
+            {candidate?.diploma ? (
+              candidate.diploma
             ) : (
               <AddButton target="diploma" />
             )}
@@ -53,8 +51,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>University</span>
           <span className="rigth-column">
-            {currentUserData?.university ? (
-              currentUserData.university
+            {candidate?.university ? (
+              candidate.university
             ) : (
               <AddButton target="university" />
             )}
@@ -63,8 +61,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Current Company</span>
           <span className="rigth-column">
-            {currentUserData?.currentCompany ? (
-              currentUserData.currentCompany
+            {candidate?.currentCompany ? (
+              candidate.currentCompany
             ) : (
               <AddButton target="currentCompany" />
             )}
@@ -73,8 +71,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Current Position</span>
           <span className="rigth-column">
-            {currentUserData?.currentPosition ? (
-              currentUserData.currentPosition
+            {candidate?.currentPosition ? (
+              candidate.currentPosition
             ) : (
               <AddButton target="currentPosition" />
             )}
@@ -83,8 +81,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Candidate Location</span>
           <span className="rigth-column">
-            {currentUserData?.location ? (
-              currentUserData.location
+            {candidate?.location ? (
+              candidate.location
             ) : (
               <AddButton target="location" />
             )}
@@ -93,8 +91,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Birthdate</span>
           <span className="rigth-column">
-            {currentUserData?.birthdate ? (
-              currentUserData.birthdate
+            {candidate?.birthdate ? (
+              candidate.birthdate
             ) : (
               <AddButton target="birthdate" />
             )}
@@ -103,8 +101,8 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Candidate Address</span>
           <span className="rigth-column">
-            {currentUserData?.address ? (
-              currentUserData.address
+            {candidate?.address ? (
+              candidate.address
             ) : (
               <AddButton target="address" />
             )}
@@ -113,7 +111,7 @@ const CandidatesDetailsPage = () => {
         <div className="line">
           <span>Candidate Phone Number</span>
           <span className="rigth-column">
-            {currentUserData?.phone ? currentUserData.phone : <AddButton target="phone" />}
+            {candidate?.phone ? candidate.phone : <AddButton target="phone" />}
           </span>
         </div>
       </div>

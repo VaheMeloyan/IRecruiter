@@ -22,50 +22,51 @@ import { UserAuth } from './context/AuthContext';
 
 
 function App() {
-
-const {user} = UserAuth()
-  const isLoggedIn = user && Object.keys(user).length
-/////IF LOGGED IN REDIRECT TO DASHBOARD/////////////
-
-
-
+  const { user } = UserAuth();
+  const isLoggedIn = user && Object.keys(user).length;
+  /////IF LOGGED IN REDIRECT TO DASHBOARD/////////////
 
   return (
     <div className="App">
-      
-        <Routes>
-        <Route path='/' element={isLoggedIn?<Header/>:<Layout/>}>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
-          <Route path='/candidates' element={<ProtectedRoute><CandidatesList /></ProtectedRoute>} >
-              {/* <Route path="summary" element={ <Summary />} />
-              <Route path="jobs" element={<JobsTab />} />
-              <Route path="resume" element={<ResumeTab />} /> */}
+      <Routes>
+        <Route path="/" element={isLoggedIn ? <Header /> : <Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="candidate/:id"
+            element={
+              <ProtectedRoute>
+                <CandidatePage />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="summary" element={<Summary />} />
+            <Route path="jobs" element={<JobsTab />} />
+            <Route path="resume" element={<ResumeTab />} />
           </Route>
-          
-        </Route> 
-          <Route path='/login' element={<LoginPage/>}/>
-          <Route path='/signup' element={<SignUpPage />} />
 
-
-          
-         
-            
-          
-
-
-
-          
-          
-        </Routes>
-      
-    
-   
-    
-      
+          <Route
+            path="/candidates"
+            element={
+              <ProtectedRoute>
+                <CandidatesList />
+              </ProtectedRoute>
+            }
+          ></Route>
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+      </Routes>
     </div>
   );
 }

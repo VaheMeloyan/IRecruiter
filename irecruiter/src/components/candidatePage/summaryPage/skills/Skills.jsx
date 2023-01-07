@@ -4,6 +4,11 @@ import "./SkillsStyles.css";
 
 
 const Skills = ({ skills }) => {
+
+
+  //if (!Object.keys(skills).length) return
+  
+
   return (
     <div className="skills-container">
       <div className="skills-title">

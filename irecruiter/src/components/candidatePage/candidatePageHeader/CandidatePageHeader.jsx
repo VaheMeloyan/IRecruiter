@@ -6,7 +6,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import DescriptionIcon from '@mui/icons-material/Description';
 
 
-const CandidatePageHeader = () => {
+const CandidatePageHeader = ({candidate}) => {
 
   const styles = {
     icons: {
@@ -16,14 +16,14 @@ const CandidatePageHeader = () => {
     }
   }
 
-
+  if (!Object.keys(candidate).length) { return}
   return (
     <>
       <div className="header-container">
-        <div className="avatar-container">L</div>
+        <div className="avatar-container">{candidate.name[0]}</div>
 
         <div className="user-details">
-          <div>Levon</div>
+          <div>{candidate.name}</div>
           <div>Yerevan, Amrenia</div>
         </div>
       </div>

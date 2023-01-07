@@ -1,16 +1,31 @@
 import "./CandidatePageStyles.css";
+import { doc, getDoc } from "firebase/firestore";
 import CandidatePageHeader from "./candidatePageHeader/CandidatePageHeader";
-import { Routes, Route, Outlet } from "react-router-dom";
-import Summary from "./summaryPage/Summary";
-import JobsTab from "./jobs/JobsTab";
-import ResumeTab from "./resume/ResumeTab";
+import { Outlet, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { db } from "../../db/firebase";
+import { useNavigate } from "react-router-dom";
+
 
 const CandidatePage = () => {
+  const { id } = useParams()
+  const candidateRef = doc(db, 'employee', id)
+  const [candidate, setCandidate] = useState({})
+  const navigate = useNavigate()
+
+
+
+  useEffect(() => { 
+    getDoc(candidateRef).then((r) => setCandidate(r.data())).catch(e => console.log(e))
+    navigate('summary')
+  },[])
+
+
+  
   return (
     <>
-      <CandidatePageHeader />
-      <Outlet />
-      
+      <CandidatePageHeader candidate={candidate } />
+      <Outlet context={candidate }/>
     </>
   );
 };
