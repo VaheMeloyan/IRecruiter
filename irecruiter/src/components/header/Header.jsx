@@ -1,5 +1,5 @@
 import {
-   Box, IconButton, Toolbar
+   Box, Divider, IconButton, Toolbar
 } from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -117,12 +117,22 @@ return (
                 
                 <div className="user_avatar" >{usersName[0]}</div>
             </div>
-              <Menu id='menu' anchorEl={anchorEl} open={open} MenuListProps={{
-                'aria-labelledby':'avatar-btn'
-              }}
+              <Menu id='menu'
+                anchorEl={anchorEl}
+                open={open}
+                MenuListProps={{'aria-labelledby':'avatar-btn'}}
                 onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
               >
                 <MenuItem>Settings</MenuItem>
+                <Divider />
                 <MenuItem onClick={handleLogout}>Sign out</MenuItem>
             </Menu>
           </div>
