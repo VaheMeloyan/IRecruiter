@@ -15,6 +15,7 @@ import JobsTab from './components/candidatePage/jobs/JobsTab';
 import ResumeTab from './components/candidatePage/resume/ResumeTab';
 import CandidatesList from './components/candidatesList/CandidatesList';
 import { UserAuth } from './context/AuthContext';
+import JobsList from './components/jobsList/JobsList';
 
 
 
@@ -58,6 +59,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <CandidatesList />
+              </ProtectedRoute>
+            }
+          ></Route>
+                <Route
+            path="/jobs"
+            element={
+              <ProtectedRoute>
+                <JobsList />
               </ProtectedRoute>
             }
           ></Route>

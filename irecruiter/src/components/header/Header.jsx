@@ -12,6 +12,10 @@ import { UserAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
 
 
 const drawerWidth = 240;
@@ -42,11 +46,23 @@ const AppBar = styled(MuiAppBar, {
 
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
-  const [openDrawer, setOpenDrawer]= useState(false)  
+
+  const [openDrawer, setOpenDrawer] = useState(false)  
 const { logout, currentUserData, settingUser, user } = UserAuth()
 const navigate = useNavigate()
 const usersName = Object.keys(currentUserData).length && currentUserData.name[0]
-const organisation = Object.keys(currentUserData).length?currentUserData.organisation:"Self-employed"
+  const organisation = Object.keys(currentUserData).length ? currentUserData.organisation : "Self-employed"
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+
+
+  const handleClose = () => { 
+    setAnchorEl(null)
+  }
+
+  const handleClick = (e) => { 
+    setAnchorEl(e.currentTarget)
+  }
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
   useEffect(() => { 
@@ -91,11 +107,24 @@ return (
             <IconButton className="help_icon">
               <HelpIcon sx={{ color: "white"}} />
             </IconButton>
-            <div className="cont">
-              <div className="user_avatar" >{usersName[0]}</div>
-           
+              <div className="cont"
+                id='avatar-btn'
+                onClick={handleClick}
+                aria-controls={open ? 'menu' : undefined}
+                aria-haspopup='true'
+                aria-expanded={open?true:undefined}
+              >
+                
+                <div className="user_avatar" >{usersName[0]}</div>
             </div>
-            <button onClick={handleLogout}>Logout</button>
+              <Menu id='menu' anchorEl={anchorEl} open={open} MenuListProps={{
+                'aria-labelledby':'avatar-btn'
+              }}
+                onClose={handleClose}
+              >
+                <MenuItem>Settings</MenuItem>
+                <MenuItem onClick={handleLogout}>Sign out</MenuItem>
+            </Menu>
           </div>
         </Toolbar>
       </Box>

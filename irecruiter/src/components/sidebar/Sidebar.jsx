@@ -10,7 +10,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const Icons = [
     {
@@ -160,7 +160,8 @@ function Sidebar(){
               </ListItemButton>
             </ListItem>
              ))}
-          </List>
+                </List>
+                <Divider />
             </Drawer>
         </React.Fragment>
     )
