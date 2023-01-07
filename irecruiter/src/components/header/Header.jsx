@@ -46,7 +46,7 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 const { logout, currentUserData, settingUser, user } = UserAuth()
 const navigate = useNavigate()
 const usersName = Object.keys(currentUserData).length && currentUserData.name[0]
-const organisation = Object.keys(currentUserData).length && currentUserData.organisation
+const organisation = Object.keys(currentUserData).length?currentUserData.organisation:"Self-employed"
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
   useEffect(() => { 
