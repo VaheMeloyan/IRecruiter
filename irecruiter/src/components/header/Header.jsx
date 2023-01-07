@@ -14,15 +14,18 @@ import { useEffect } from "react";
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
-  const { logout, currentUserData, settingUser,user } = UserAuth()
+  const { logout, currentUserData, settingUser, user } = UserAuth()
+  const navigate = useNavigate()
+  const usersName = Object.keys(currentUserData).length && currentUserData.name[0]
+  const organisation = Object.keys(currentUserData).length && currentUserData.organisation
+
     /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
     useEffect(() => { 
       if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
         settingUser(user.uid)
       }
     })
-  const navigate = useNavigate()
-  const usersName = Object.keys(currentUserData).length&&currentUserData.name[0]
+ 
 
 
   const handleLogout = async () => {
@@ -44,7 +47,7 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
                 <MenuIcon fontSize="large" sx={{ color: "white" }} />
                           </IconButton>
                           <span><Link to="/dashboard
-                          "className="home_link">Home</Link></span>
+                          "className="home_link">{organisation}</Link></span>
                       </div>
                    
             <input

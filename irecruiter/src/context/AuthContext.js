@@ -62,7 +62,6 @@ export const AuthContextProvider = ({ children }) => {
                 } else { 
                     console.log("No such user!");
                 }
-                
               }
         }
         getUserData()

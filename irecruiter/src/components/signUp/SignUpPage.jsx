@@ -54,7 +54,20 @@ function SignUp() {
     );
   }
 
-
+  function Organisation(){
+    if(userType === 'recruiter') return(
+      <div className="input">
+                <TextFieldWrapper
+                  name="organisation"
+                  sx={{ width: "500px" }}
+                  size="small"
+                  className="outlined-basic"
+                  label="Organisation*"
+                  variant="outlined"
+                />
+              </div>
+    )
+  }
 
   
   const createNewUser = (data) => {
@@ -75,7 +88,8 @@ function SignUp() {
 
         } : {
           name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber
+          phone: data.phoneNumber,
+          organisation:data.organisation
         }
         setDoc(doc(db, userType, cred.user.uid), object)
         return cred.user.uid
@@ -147,6 +161,9 @@ function SignUp() {
                   </RadioGroup>
                 </div>
               </div>
+
+              <Organisation/>
+
 
               <div className="input">
                 <TextFieldWrapper
