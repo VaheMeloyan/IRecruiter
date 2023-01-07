@@ -1,5 +1,4 @@
 import "./CandidatePageHeaderStyles.css";
-import avatar from "./avatar.png";
 import { Link } from "react-router-dom";
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import WorkIcon from '@mui/icons-material/Work';

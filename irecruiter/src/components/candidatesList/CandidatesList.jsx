@@ -3,11 +3,10 @@ import { useState, useEffect, useMemo } from 'react'
 import { collection, getDocs } from "firebase/firestore";
 import {AgGridReact} from 'ag-grid-react';
 import './CandidatesListStyles.css'
-import { useParams } from 'react-router-dom';
 import 'ag-grid-community/styles//ag-grid.css';
 import 'ag-grid-community/styles//ag-theme-alpine.css';
 import { Button } from '@mui/material';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 

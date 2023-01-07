@@ -42,7 +42,7 @@
   margin: 10px 10px 10px 0;
 }
 
-ul {
+.link-list-container ul {
   padding-inline-start: 10px;
   display: flex;
   align-items:center;

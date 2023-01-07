@@ -1,5 +1,4 @@
 import "./CandidatesDetailsPageStyles.css";
-import { UserAuth } from "../../../../context/AuthContext";
 
 
 

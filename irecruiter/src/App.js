@@ -1,9 +1,7 @@
 import './App.css';
 import Header from './components/header/Header';
-import { useState,useEffect} from 'react';
 import LoginPage from './components/login/LoginPage';
 import { Routes, Route } from 'react-router-dom'
-import { AuthContextProvider } from './context/AuthContext';
 import Dashboard from './components/profilePage/Dashboard';
 import SignUpPage from './components/signUp/SignUpPage';
 import ProtectedRoute from './components/ProtectedRoute';
