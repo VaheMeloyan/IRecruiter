@@ -41,7 +41,7 @@ const LoginPage = () => {
   return (
     <div className="login-page-wrapper">
       <div className="login-form">
-        <div className="logo">
+        <div className="login-logo">
           <Link to="/">
             <HandshakeIcon
               sx={{ width: "80px", height: "80px" }}

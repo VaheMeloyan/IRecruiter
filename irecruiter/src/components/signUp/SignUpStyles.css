@@ -49,16 +49,17 @@
 
 }
 
+.footer-login {
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 850px) {
   .signup-container {
-
     background-color: #fff;
     width: 88%;
-    margin:20px;
-    box-shadow: none;
   }
   .logo {
-    margin-top: 0px;
+    margin-top: 20px;
     margin-bottom: 0px;
     }
     .input {
@@ -67,5 +68,8 @@
       margin: 10px;
       align-items:center;
    
+    }
+    .main {
+      height: 90vh;
     }
 }
