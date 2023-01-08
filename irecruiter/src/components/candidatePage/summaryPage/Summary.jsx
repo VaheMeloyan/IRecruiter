@@ -14,7 +14,7 @@ const Summary = () => {
   return (
     <div className="summary-container">
       <CandidatesDetailsPage candidate={candidate } />
-      <Skills  />
+      <Skills  candidate={candidate }/>
 
     </div>
   );

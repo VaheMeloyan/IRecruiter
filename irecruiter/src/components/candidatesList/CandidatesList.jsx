@@ -7,6 +7,8 @@ import 'ag-grid-community/styles//ag-grid.css';
 import 'ag-grid-community/styles//ag-theme-alpine.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Loader from '../loader/Loader';
+
 
 
 
@@ -22,6 +24,7 @@ const SimpleComp = p => {
 
 const CandidatesList = () => {
 
+  const [loading, setLoading] = useState(false)
 
   const [docs, setDocs] = useState([]);
 
@@ -32,10 +35,12 @@ const CandidatesList = () => {
 
   useEffect(() => {
     let arr = []
+    setLoading(true)
     getDocs(collection(db, "employee")).then((docs) => {
       docs.forEach(doc => arr.push(doc.data()))
-      console.log(arr)
+  
       setDocs(arr)
+      setLoading(false)
     })
     
   }, [])
@@ -73,7 +78,10 @@ const CandidatesList = () => {
     },
   }
 
-console.log(docs)
+///////////////rendering Loader if still loadings
+  if (loading) return <Loader />
+  
+
   return (
 
     <>

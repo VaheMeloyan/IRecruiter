@@ -14,6 +14,8 @@ import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 
 
@@ -80,7 +82,20 @@ const handleLogout = async () => {
   } catch(e) {
     console.log(e.message)
    }
- }
+  }
+  
+  const styles = {
+    menuItem: {
+      height: "25px",
+      fontSize: 15,
+    },
+    menuIcon: {
+      marginRight: "10px",
+      fontSize: 20
+    }  
+  }
+    
+  
 return (
   <>
    <Box>
@@ -118,6 +133,7 @@ return (
                 <div className="user_avatar" >{usersName[0]}</div>
             </div>
               <Menu id='menu'
+                
                 anchorEl={anchorEl}
                 open={open}
                 MenuListProps={{'aria-labelledby':'avatar-btn'}}
@@ -131,9 +147,13 @@ return (
                   horizontal: 'right',
                 }}
               >
-                <MenuItem>Settings</MenuItem>
-                <Divider />
-                <MenuItem onClick={handleLogout}>Sign out</MenuItem>
+                <Link to='settings'>
+                <MenuItem sx={styles.menuItem} divider alignItems>
+                  <SettingsIcon sx={styles.menuIcon}/>Settings</MenuItem>
+                </Link> 
+                
+                <MenuItem onClick={handleLogout} sx={styles.menuItem}>
+                  <PowerSettingsNewIcon sx={styles.menuIcon} /> Sign out</MenuItem>
             </Menu>
           </div>
         </Toolbar>

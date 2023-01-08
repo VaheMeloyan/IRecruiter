@@ -71,7 +71,8 @@ function SignUp() {
 
   
   const createNewUser = (data) => {
-    if (!data.name || !data.phone) { 
+    if (!data.name || !data.phoneNumber) { 
+      console.log(data.name, data.phoneNumber)
       setError("All fields marked * should be filled up")
       return 
     }
@@ -90,7 +91,8 @@ function SignUp() {
           createdBy: cred.user.uid,
           id:cred.user.uid,
           created: new Date().toLocaleString(),
-          location:null
+          location: null,
+          skills:[]
 
         } : {
           name: data.name[0].toUpperCase() + data.name.slice(1),

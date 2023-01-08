@@ -19,7 +19,8 @@ export const AuthContextProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
     const [currentUserData, setCurrentUserData] = useState({});
-    const [userType, setUserType] = useState('recruiter')
+    const [userType, setUserType] = useState('recruiter');
+    const [loading, setLoading] = useState(false);
 
     
     
@@ -46,19 +47,22 @@ export const AuthContextProvider = ({ children }) => {
     }, [])
     
 
-    function settingUser (id)  { 
+    function settingUser(id) { 
+        setLoading(true)
         const currentUserDataRef = doc(db, userType, id)
        console.log(userType, "The id is: ", id)
         const getUserData = async() => { 
             const docSnap = await getDoc(currentUserDataRef)
             if (docSnap.exists()) {
                 setCurrentUserData(docSnap.data())
+                setLoading(false)
               } else {
                 // doc.data() will be undefined in this case
                 const currentUserDataRef = doc(db, 'employee', id)
                 const docSnap = await getDoc(currentUserDataRef)
                 if (docSnap.exists()) {
                     setCurrentUserData(docSnap.data())
+                    setLoading(false)
                 } else { 
                     console.log("No such user!");
                 }
@@ -66,11 +70,21 @@ export const AuthContextProvider = ({ children }) => {
         }
         getUserData()
        
+       
     }
 
 
     return (
-        <UserContext.Provider value={{createUser, loginUser, user, logout, currentUserData, setUserType, userType, settingUser }}>
+        <UserContext.Provider value={{
+            createUser,
+            loginUser,
+            user, logout,
+            currentUserData,
+            setUserType,
+            userType,
+            loading,
+            settingUser
+        }}>
             {children}
         </UserContext.Provider>
     )

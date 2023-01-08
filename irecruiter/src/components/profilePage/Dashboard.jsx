@@ -4,12 +4,13 @@ import { Box, Button } from "@mui/material";
 import { useState } from 'react';
 import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import { UserAuth } from "../../context/AuthContext";
+import Loader from './../loader/Loader';
 
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
  
-  const { currentUserData, settingUser, user } = UserAuth()
+  const { currentUserData, settingUser, user, loading } = UserAuth()
 
 
 
@@ -35,7 +36,9 @@ const Dashboard = () => {
   
 
 
-
+///////////////rendering Loader if still loadings
+  if (loading) return <Loader />
+  
 
   return (
     <div className="profile-container">
