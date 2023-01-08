@@ -148,7 +148,7 @@ return (
                 }}
               >
                 <Link to='settings'>
-                <MenuItem sx={styles.menuItem} divider alignItems>
+                <MenuItem sx={styles.menuItem} divider alignitems='true'>
                   <SettingsIcon sx={styles.menuIcon}/>Settings</MenuItem>
                 </Link> 
                 

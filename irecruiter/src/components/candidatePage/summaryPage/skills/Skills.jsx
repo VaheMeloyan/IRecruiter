@@ -17,8 +17,10 @@ const Skills = ({ candidate }) => {
   //if (!Object.keys(skills).length) return
 
   const handleAddButon = () => { 
+    console.log("render")
     if (input) {
     const skillsRef = doc(db, "employee", candidate.id);
+      
     updateDoc(skillsRef, {
       skills: arrayUnion(input)
     }).then(() => setInput("")).catch(e => console.log(e))
@@ -37,7 +39,8 @@ if(!Object.keys(candidate).length) return
         <span>Skills</span>
       </div>
       <div className="skills-list">
-       <div className="sk-List">{candidate.skills.length ? (
+        <div className="sk-List">
+          {candidate.skills.length ? (
           candidate.skills.map((skill) => {
             return <div className="skill-item"><li >{skill}</li></div>;
           })
@@ -45,7 +48,7 @@ if(!Object.keys(candidate).length) return
         )}</div> 
         <div className="footer">
         {<input type="text" value={input} onChange={(e) => setInput(e.target.value)}></input>}
-        <Button variant="contained" sx={{marginTop:"10px",}} onClick={handleAddButon}> + Add</Button>
+        <Button type="submit" variant="contained" sx={{marginTop:"10px",}} onClick={handleAddButon}> + Add</Button>
         </div>
         
       </div>

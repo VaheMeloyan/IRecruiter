@@ -1,5 +1,5 @@
 import "./CandidatePageStyles.css";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot  } from "firebase/firestore";
 import CandidatePageHeader from "./candidatePageHeader/CandidatePageHeader";
 import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ const CandidatePage = () => {
 
   useEffect(() => { 
     setLoading(true)
-    getDoc(candidateRef).then((r) => setCandidate(r.data())).catch(e => console.log(e))
+    onSnapshot(candidateRef, (doc) => setCandidate(doc.data()))
     navigate('summary')
     setLoading(false)
   },[])
