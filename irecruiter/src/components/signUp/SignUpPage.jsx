@@ -7,6 +7,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Formik, Form, useField, useFormikContext } from "formik";
 import * as yup from "yup";
+import "yup-phone"
 import { UserAuth } from "../../context/AuthContext"; 
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -47,6 +48,7 @@ function SignUp() {
         }}
         variant="contained"
         color="primary"
+        disabled = {!context.isValid}
       >
         {" "}
         SIGN UP
@@ -106,6 +108,7 @@ function SignUp() {
         </div>
         <div>
           <Formik
+          validateOnMount
             initialValues={{
               name: "",
               organisation:"",
@@ -116,7 +119,7 @@ function SignUp() {
             validationSchema={yup.object().shape({
               name: yup.string().required("Necessary"),
               organisation: yup.string().required("Necessary"),
-              phoneNumber: yup.string().required("Necessary"),
+              phoneNumber: yup.string().required("Necessary").phone(null,true,'Invalid phone number'),
               email: yup.string().email("Invalid email").required("Necessary"),
               password: yup.string().required("Necessary"),
             })}
