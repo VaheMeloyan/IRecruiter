@@ -1,3 +1,6 @@
+
+
+
 .main {
   height: 100vh;
   box-shadow: inset;
@@ -44,4 +47,25 @@
   height: 40px;
 
 
+}
+
+@media screen and (max-width: 850px) {
+  .signup-container {
+
+    background-color: #fff;
+    width: 88%;
+    margin:20px;
+    box-shadow: none;
+  }
+  .logo {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    }
+    .input {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      align-items:center;
+   
+    }
 }

@@ -215,7 +215,7 @@ function SignUp() {
           <div className="input" style={{ marginButtom: "40px" }}></div>
         </div>
             <div style={{color:"red"}}>{error}</div>
-        <div className="input">
+        <div className="footer-login">
           
           <p>Already have an account?</p>
           <Link to="/login" style={{marginLeft:"5px"}}>Login</Link>
