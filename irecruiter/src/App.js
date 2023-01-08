@@ -12,7 +12,6 @@ import Contact from './components/landingPage/Contact'
 import CandidatePage from './components/candidatePage/CandidatePage';
 import Summary from './components/candidatePage/summaryPage/Summary';
 import JobsTab from './components/candidatePage/jobs/JobsTab';
-import ResumeTab from './components/candidatePage/resume/ResumeTab';
 import CandidatesList from './components/candidatesList/CandidatesList';
 import { UserAuth } from './context/AuthContext';
 import JobsList from './components/jobsList/JobsList';
@@ -51,7 +50,7 @@ function App() {
           >
             <Route path="summary" element={<Summary />} />
             <Route path="jobs" element={<JobsTab />} />
-            <Route path="resume" element={<ResumeTab />} />
+            
           </Route>
 
           <Route

@@ -11,6 +11,8 @@
     .summary-container {
         display: flex;
         flex-direction: column;
-        padding:8px
+        padding:8px;
+        font-size: small;
+
     }
   }
