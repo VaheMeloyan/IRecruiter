@@ -1,7 +1,7 @@
 .skills-container {
   border: 1px solid#E0E0E0;
   border-radius: 5px;
-  height: 200px;
+  
 }
 
 .skills-title {
@@ -15,14 +15,7 @@
   margin-left: 10px;
 }
 
-.add-btn {
-  background-color: #6200e3;
-  margin: 20px 50px 50px 50px;
-  width: 100px;
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-}
+
 
 
 .skill-item {
@@ -45,5 +38,6 @@
   justify-content: center;
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 20px;
   
 }

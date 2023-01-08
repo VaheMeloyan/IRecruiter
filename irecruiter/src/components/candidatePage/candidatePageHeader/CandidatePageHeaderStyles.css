@@ -29,11 +29,14 @@
 }
 
 @media screen and (max-width: 850px) {
-  ul {
+  .link-list-container  ul {
     width: 100%;
   }
   a {
-    margin: 15px;
+    width: 50%;
+  }
+  .link-list-container  li {
+    margin: auto;
   }
 }
 
@@ -43,7 +46,7 @@
 }
 
 .link-list-container ul {
-  padding-inline-start: 10px;
+  padding-inline-start: 0px;
   display: flex;
   align-items:center;
   vertical-align: middle;

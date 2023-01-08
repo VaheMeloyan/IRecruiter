@@ -119,9 +119,9 @@ return (
             <IconButton>
               <AddCircleIcon sx={{ color: "white" }} />
             </IconButton>
-            <IconButton className="help_icon">
+            {/* <IconButton className="help_icon">
               <HelpIcon sx={{ color: "white"}} />
-            </IconButton>
+            </IconButton> */}
               <div className="cont"
                 id='avatar-btn'
                 onClick={handleClick}

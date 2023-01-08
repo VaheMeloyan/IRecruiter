@@ -34,9 +34,6 @@ const CandidatePageHeader = ({candidate}) => {
           <Link to="jobs">
             <li><div className="link-div"><WorkIcon sx={styles.icons}/>Jobs</div></li>
           </Link>
-          <Link to="resume">
-            <li><div className="link-div"><DescriptionIcon sx={styles.icons}/>Resume</div></li>
-          </Link>
         </ul>
       </div>
     </>
