@@ -1,8 +1,5 @@
-.candidatePage-container {
-  display: grid;
-  grid-template-columns: 6fr 6fr;
-  grid-gap: 8px;
-  margin-top: 8px;
+.candidatePage-container{
+  padding-left: 240px;
 }
 
 @media screen and (max-width: 850px) {

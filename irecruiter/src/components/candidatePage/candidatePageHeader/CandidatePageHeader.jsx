@@ -2,7 +2,7 @@ import "./CandidatePageHeaderStyles.css";
 import { Link } from "react-router-dom";
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import WorkIcon from '@mui/icons-material/Work';
-import DescriptionIcon from '@mui/icons-material/Description';
+
 
 
 const CandidatePageHeader = ({candidate}) => {

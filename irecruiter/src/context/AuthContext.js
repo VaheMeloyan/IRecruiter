@@ -21,6 +21,7 @@ export const AuthContextProvider = ({ children }) => {
     const [currentUserData, setCurrentUserData] = useState({});
     const [userType, setUserType] = useState('recruiter');
     const [loading, setLoading] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen ] = useState(false)
 
     
     
@@ -83,7 +84,9 @@ export const AuthContextProvider = ({ children }) => {
             setUserType,
             userType,
             loading,
-            settingUser
+            settingUser,
+            isSidebarOpen,
+            setIsSidebarOpen
         }}>
             {children}
         </UserContext.Provider>

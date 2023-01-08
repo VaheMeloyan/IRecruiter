@@ -16,7 +16,7 @@ const Skills = ({ candidate }) => {
   console.log(candidate)
   //if (!Object.keys(skills).length) return
 
-  const handleAddButon = () => { 
+  const addCandidateSkill = () => { 
     console.log("render")
     if (input) {
     const skillsRef = doc(db, "employee", candidate.id);
@@ -48,7 +48,7 @@ if(!Object.keys(candidate).length) return
         )}</div> 
         <div className="footer">
         {<input type="text" value={input} onChange={(e) => setInput(e.target.value)}></input>}
-        <Button type="submit" variant="contained" sx={{marginTop:"10px",}} onClick={handleAddButon}> + Add</Button>
+        <Button type="submit" variant="contained" sx={{marginTop:"10px",}} onClick={addCandidateSkill}> + Add</Button>
         </div>
         
       </div>

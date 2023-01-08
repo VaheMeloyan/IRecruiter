@@ -50,7 +50,7 @@ const AppBar = styled(MuiAppBar, {
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
   const [openDrawer, setOpenDrawer] = useState(false)  
-const { logout, currentUserData, settingUser, user } = UserAuth()
+const { logout, currentUserData, settingUser, user, setIsSidebarOpen } = UserAuth()
 const navigate = useNavigate()
 const usersName = Object.keys(currentUserData).length && currentUserData.name[0]
   const organisation = Object.keys(currentUserData).length ? currentUserData.organisation : "Self-employed"
@@ -103,7 +103,10 @@ return (
       <Box className="navbar">
         <Toolbar className="toolbar">
           <div>
-            <IconButton  onClick={() => setOpenDrawer(prev => !prev) }>
+              <IconButton onClick={() => {
+                setOpenDrawer(prev => !prev)
+                setIsSidebarOpen(prev => !prev)
+              }}>
                 <MenuIcon fontSize="large" sx={{ color: "white" }} />
                         </IconButton>
                         <span><Link to="/dashboard

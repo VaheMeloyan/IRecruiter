@@ -8,6 +8,7 @@ import 'ag-grid-community/styles//ag-theme-alpine.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
+import { UserAuth } from '../../context/AuthContext';
 
 
 
@@ -23,7 +24,7 @@ const SimpleComp = p => {
 
 
 const CandidatesList = () => {
-
+  const {isSidebarOpen} = UserAuth()
   const [loading, setLoading] = useState(false)
 
   const [docs, setDocs] = useState([]);
@@ -84,7 +85,7 @@ const CandidatesList = () => {
 
   return (
 
-    <>
+    <div style={isSidebarOpen?{"padding-left":"240px"}:{"padding-left":"0px"}}>
       <div className='create-candidate-header'>
         <h1>Candidates</h1>
         <Button variant='contained' sx={styles.button }>+ Create candidate</Button>
@@ -106,7 +107,7 @@ const CandidatesList = () => {
 				</AgGridReact>
 			</div>
     
-    </>
+    </div>
    
   )
 }
