@@ -82,9 +82,12 @@ const {logout, currentUserData} = UserAuth()
               </IconButton>
               <div className="cont">
                 <div className="user_avatar" >{usersName[0]}</div>
-             
+                <div className="dropDown">
+             <a href = '#' onClick={handleLogout}>Logout* </a>
+             <a href = "#"> Settings* </a>
+             </div>
               </div>
-              <button onClick={handleLogout}>Logout</button>
+              
             </div>
           </Toolbar>
         </Box>
