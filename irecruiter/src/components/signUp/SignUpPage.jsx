@@ -120,6 +120,7 @@ function SignUp() {
           <Formik
             initialValues={{
               name: "",
+              organisation:"",
               phoneNumber: "",
               organisation:"",
               email: "",
@@ -127,6 +128,7 @@ function SignUp() {
             }}
             validationSchema={yup.object().shape({
               name: yup.string().required("Necessary"),
+              organisation: yup.string().required("Necessary"),
               phoneNumber: yup.string().required("Necessary"),
               organisation:yup.string().required("Necessary"),
               email: yup.string().email("Invalid email").required("Necessary"),

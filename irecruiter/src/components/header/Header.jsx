@@ -48,6 +48,7 @@ const AppBar = styled(MuiAppBar, {
 
 
 const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
+ 
 
   const [openDrawer, setOpenDrawer] = useState(false)  
 const { logout, currentUserData, settingUser, user, setIsSidebarOpen } = UserAuth()

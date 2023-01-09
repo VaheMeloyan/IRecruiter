@@ -21,7 +21,7 @@ function Home() {
  
 
   return (
-    <div>
+    <div className='allContainer'>
         <div className='container'>
             <h1>Recruiting software <br/> that helps you hire faster.</h1>
             <p className='homepagetext'> Recruitment website which will  help you to find top talents for your business,
@@ -30,8 +30,11 @@ function Home() {
               <Link to='/signup' className='recruiterbutton'onClick={() => {setUserType("recruiter") }}>Start as Recruiter</Link>
           <Link to='/signup' className='employeebutton' onClick={() => {setUserType("employee") }}>Start as Employee</Link>
             </div>
+
+            
         </div>
         <img src={hr} alt='hr.png' className='main-picture'></img>
+        
 
     </div>
   )
